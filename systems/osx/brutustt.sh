@@ -2,7 +2,7 @@
 CUR_PWD=`pwd`
 
 # SPY Package
-if [ -d "$SOFTWARE_GIT/spy" ]; then
+if [ ! -d "$SOFTWARE_GIT/spy" ]; then
 	cd $SOFTWARE_GIT
 	git clone https://github.com/BrutusTT/spy.git
 fi
@@ -12,7 +12,7 @@ git pull
 python setup.py install
 
 # pyJD Package
-if [ -d "$SOFTWARE_GIT/pyJD" ]; then
+if [ ! -d "$SOFTWARE_GIT/pyJD" ]; then
 	cd $SOFTWARE_GIT
 	git clone https://github.com/BrutusTT/pyJD.git
 fi
@@ -22,7 +22,7 @@ git pull
 python setup.py install
 
 # pyNAO Package
-if [ -d "$SOFTWARE_GIT/pyNAO" ]; then
+if [ ! -d "$SOFTWARE_GIT/pyNAO" ]; then
 	cd $SOFTWARE_GIT
 	git clone https://github.com/BrutusTT/pyNAO.git
 fi
