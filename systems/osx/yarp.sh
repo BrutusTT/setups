@@ -18,7 +18,7 @@ export C_INCLUDE_PATH=$C_INCLUDE_PATH:$(brew --prefix gettext)/include/
 export PATH=$PATH:/usr/local/bin
 export PYTHONLIB=$(brew --prefix python)/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
 
-# 
+# Doxygen
 if [ ! -e "Doxyfile" ]; then
 	ln -s $SOFTWARE/docs/yarp.doxyfile Doxyfile
 fi
@@ -38,6 +38,7 @@ fi
 mkdir build
 cd build
 
+# set the compile flags
 export FLAGS="
 -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
 -DALLOW_IDL_GENERATION=ON
