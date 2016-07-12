@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Environment Setup
-./base_posix.sh
-
 # OS Detection
 platform='unknown'
 unamestr=`uname`
@@ -16,6 +13,10 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 	
 	$platform/brew.sh
 fi
+
+# Environment Setup
+source $platform/bash_env
+./base_posix.sh
 
 # third party tools
 thirdparty_git.sh
