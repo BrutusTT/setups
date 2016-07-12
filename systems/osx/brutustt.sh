@@ -1,6 +1,24 @@
 # save current directory
 CUR_PWD=`pwd`
 
+####################################################################################################
+# Thirdparty Packages
+####################################################################################################
+
+# SPY Package
+if [ ! -d "$SOFTWARE_GIT/python-ar-markers" ]; then
+	cd $SOFTWARE_GIT
+	git clone https://github.com/DebVortex/python-ar-markers.git
+fi
+
+cd $SOFTWARE_GIT/python-ar-markers
+git pull
+python setup.py install
+
+####################################################################################################
+# BrutusTT Packages
+####################################################################################################
+
 # SPY Package
 if [ ! -d "$SOFTWARE_GIT/spy" ]; then
 	cd $SOFTWARE_GIT
@@ -30,6 +48,7 @@ fi
 cd $SOFTWARE_GIT/pyNAO
 git pull
 python setup.py install
+
 
 # go back to the initial current directory
 cd $CUR_PWD
