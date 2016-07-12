@@ -41,7 +41,7 @@ cd build
 # set the compile flags
 export FLAGS="
 -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
--DALLOW_IDL_GENERATION=ON
+-DALLOW_IDL_GENERATION=OFF
 -DCMAKE_BUILD_TYPE=RELEASE 
 -DCREATE_DEVICE_LIBRARY_MODULES=TRUE 
 -DCREATE_GUIS=TRUE 
