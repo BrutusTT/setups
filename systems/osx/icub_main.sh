@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # save current directory
 CUR_PWD=`pwd`
 
