@@ -1,3 +1,6 @@
+# save current directory
+CUR_PWD=`pwd`
+
 export GIT_YARP=$SOFTWARE/git/yarp
 
 # Clone Yarp if it does not exist yet
@@ -12,26 +15,26 @@ git pull
 
 # set some environment variables for compiling
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$(brew --prefix gettext)/include/
-export OPENNI2_INCLUDE=/usr/local/include/ni2
-export OPENNI2_REDIST=/usr/local/lib/ni2
-export NITE2_INCLUDE=$SOFTWARE/bin/NiTE-MacOSX-x64-2.2/Include
-export NITE2_REDIST64=$SOFTWARE/bin/NiTE-MacOSX-x64-2.2/Redist
 export PATH=$PATH:/usr/local/bin
 export PYTHONLIB=$(brew --prefix python)/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
 
+# 
 if [ ! -e "Doxyfile" ]; then
-ln -s $SOFTWARE/docs/yarp.doxyfile Doxyfile
+	ln -s $SOFTWARE/docs/yarp.doxyfile Doxyfile
 fi
 
+# remove old build directory
 if [ -d "build" ]; then
   rm -rf build
 fi
 
+# move and remove yarp include directory from previous runs
 if [ -d "/usr/local/include/yarp" ]; then
   rm -rf /usr/local/include/yarp_prev
   mv /usr/local/include/yarp /usr/local/include/yarp_prev
 fi
 
+# create build directory and switch to it
 mkdir build
 cd build
 
@@ -69,10 +72,13 @@ export FLAGS="
 -DYARP_USE_QCUSTOMPLOT=OFF
 "
 
+# run CMAKE
 cmake -Wno-dev .. $FLAGS 
-make 
-make install
 
+# compile and install
+make -j 8 && make install
+
+# build java bindings
 cd generated_src
 mv java yarp
 cd yarp
@@ -82,3 +88,6 @@ echo Main-Class: yarpJNI > manifest.txt
 jar cvfm jyarp-linux.jar manifest.txt yarp
 cd ..
 cp ./lib/libjyarp.jnilib ./generated_src
+
+# go back to the initial current directory
+cd $CUR_PWD
