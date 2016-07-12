@@ -1,1 +1,84 @@
+####################################################################################################
+# General Environment Variables
+####################################################################################################
+export JAVA_HOME=$(/usr/libexec/java_home)
+export EDITOR=mcedit
+
 export SOFTWARE=~/software
+export SOFTWARE_BIN=$SOFTWARE/bin
+export SOFTWARE_BUILD=$SOFTWARE/build
+export SOFTWARE_GIT=$SOFTWARE/git
+
+export PATH=$SOFTWARE_BIN:/usr/local/bin:$PATH:/usr/local/sbin:
+
+####################################################################################################
+# Shortcuts for CLI tools
+####################################################################################################
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
+
+alias la="ls -la"
+alias netstat_osx="sudo lsof -i -P"
+alias osxpython="/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python"
+alias ports='lsof -i -P | grep -i "listen"'
+alias scp="rsync -avzP"		# rsync settings
+
+alias brewup="brew update && brew upgrade --all"
+
+# recursive update in git directory
+alias gitup='for dir in $SOFTWARE_GIT/*; do (cd "$dir" && echo "$dir" && git pull); done'
+
+
+####################################################################################################
+# YARP/iCub Environment Variables
+####################################################################################################
+export YARP_DATA_DIRS=/usr/local/share/iCub:/usr/local/share/yarp
+export YARP_ROBOT_NAME=iCubEdinburgh01
+export ICUBcontrib_DIR=/usr/local/share/ICUBcontrib
+export LUA_PATH=";;;$SOFTWARE_GIT/rFSM/?.lua;$ICUBcontrib_DIR/share/ICUBcontrib/contexts/iol/lua/?.lua"
+
+export OPENNI2_INCLUDE=/usr/local/include/ni2
+export OPENNI2_REDIST=/usr/local/lib/ni2
+export NITE2_INCLUDE=$SOFTWARE_BIN/NiTE-MacOSX-x64-2.2/Include
+export NITE2_REDIST64=$SOFTWARE_BIN/NiTE-MacOSX-x64-2.2/Redist
+
+####################################################################################################
+# Robotic Shortcuts
+####################################################################################################
+alias startgrabber="yarpdev --device opencv_grabber "
+alias startmary="cd $SOFTWARE_GIT/marytts-installer && marytts server"
+alias startnao="/Applications/Choregraphe.app/Contents/Resources/bin/naoqi-bin"
+
+alias yarpclean="yarp clean --timeout 1.0"
+
+
+####################################################################################################
+# Utility functions
+####################################################################################################
+
+# password generator
+genpasswd() {
+    local l=$1
+        [ "$l" == "" ] && l=16
+        env LC_CTYPE=C tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
+}
+
+# return the program with the maximum number of open files
+openfiles() {
+    sudo lsof -n | perl -pe '$x = <>; while(<>) { ($cmd, $pid, $rest) = split(/\s+/); $cmds{$pid} = $cmd; $pids{$pid}++;} while( ($key, $val) = each %pids) { if ($val > $max) { $max = $val; $maxpid = $key; } } print "pid: $maxpid ($cmds{$maxpid}) has the most ($max) filedescriptors \n";'
+}
+
+# recursive grep in C++ files
+searchc++() {
+    grep -n -R "$1" --include=*.cpp --include=*.h *
+}
+
+# recursive grep in Python files
+searchpy() {
+    grep -n -R "$1" --include=*.py *
+}
+
+# recursive grep in Java files
+searchjava() {
+    grep -n -R "$1" --include=*.java *
+}
