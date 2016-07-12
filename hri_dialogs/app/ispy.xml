@@ -1,0 +1,44 @@
+<application>
+    <name>HRI I spy</name>
+    <description></description>
+    <version>1.0</version>
+    <authors>
+        <author email="ijk1@hw.ac.uk">Ingo Keller</author>
+    </authors>
+
+    <module>
+        <name>yarpdev</name>
+        <parameters>--device opencv_grabber --width 640 --height 480</parameters>
+        <node>localhost</node>
+        <prefix></prefix>
+    </module>
+
+    <module>
+        <name>HCMarker</name>
+        <parameters></parameters>
+        <node>localhost</node>
+        <prefix></prefix>
+    </module>
+
+    <!-- views -->
+    <module>
+            <name>yarpview</name>
+            <parameters>--name /view/marker --x 0 --y 0 --p 50</parameters>
+            <node>localhost</node>
+    </module>
+
+    <!-- grabber:out -->
+    <connection>
+            <from>/grabber</from>
+            <to>/HCMarker/img:i</to>
+            <protocol></protocol>
+    </connection>
+
+    <!-- HCMarker:out -->
+    <connection>
+            <from>/HCMarker/img:o</from>
+            <to>/view/marker</to>
+            <protocol></protocol>
+    </connection>
+
+</application>
