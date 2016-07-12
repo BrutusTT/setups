@@ -4,7 +4,7 @@ CUR_PWD=`pwd`
 export GIT_ICUB_MAIN=$SOFTWARE/git/icub-main
 
 # Clone Yarp if it does not exist yet
-if [ ! -e "$GIT_YARP" ]; then
+if [ ! -e "$GIT_ICUB_MAIN" ]; then
 	cd $SOFTWARE/git
 	git clone https://github.com/robotology/icub-main.git
 fi
