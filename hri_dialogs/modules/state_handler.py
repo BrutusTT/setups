@@ -148,7 +148,7 @@ class StateHandler(BaseModule):
         #
         start   = time.time()
         markers = {}
-        while time.time() - start < 5:
+        while time.time() - start < 0.5:
             
             bottle = self.markerPort.read()
             if bottle:
