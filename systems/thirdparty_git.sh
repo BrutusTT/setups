@@ -26,7 +26,5 @@ cd $SOFTWARE_GIT/python-ar-markers
 git pull
 python setup.py install
 
-pip install SpeechRecognition
-
 # go back to the initial current directory
 cd $CUR_PWD

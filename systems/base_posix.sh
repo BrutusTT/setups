@@ -22,3 +22,16 @@ if [ ! -d "~/software/git" ]; then
 		mkdir ~/software/git
 fi
 
+if [ ! -d "~/software/environments" ]; then
+	echo "create environments directory"
+		mkdir ~/software/environments
+fi
+
+
+# Python Packages
+
+echo "Setup Python Packages via pip"
+
+pip install virtualenv
+pip install SpeechRecognition
+pip install numpy

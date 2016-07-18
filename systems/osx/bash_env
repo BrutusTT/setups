@@ -8,6 +8,7 @@ export SOFTWARE=~/software
 export SOFTWARE_BIN=$SOFTWARE/bin
 export SOFTWARE_BUILD=$SOFTWARE/build
 export SOFTWARE_GIT=$SOFTWARE/git
+export SOFTWARE_ENV=$SOFTWARE/environments
 
 export PATH=$SOFTWARE_BIN:/usr/local/bin:$PATH:/usr/local/sbin:
 
@@ -48,7 +49,7 @@ export NITE2_REDIST64=$SOFTWARE_BIN/NiTE-MacOSX-x64-2.2/Redist
 alias startgrabber="yarpdev --device opencv_grabber "
 alias startmary="cd $SOFTWARE_GIT/marytts-installer && marytts server"
 alias startnao="/Applications/Choregraphe.app/Contents/Resources/bin/naoqi-bin"
-
+alias pynao1="source $SOFTWARE_ENV/pynao1/bin/activate"
 alias yarpclean="yarp clean --timeout 1.0"
 
 
