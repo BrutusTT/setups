@@ -23,6 +23,7 @@ class Database(object):
             # split lines into entries and only keep entries that have 3 elements
             self.db      = [x.split(',') for x in data if len(x.split(',')) == 3]
             self.db      = [(int(oid), name, color) for oid, name, color in self.db]
+            self.visible = []
 
             # get the set of available colors
             self.colors  = set([x[2] for x in self.db])
@@ -47,9 +48,18 @@ class Database(object):
                 print '%s\t%s\t%s' % tuple(x)
 
 
+
+    def setVisibleObjects(self, names):
+        print names
+        self.visible = [ entry for entry in self.db if entry[1] in names ]
+        print self.visible
+        
+        
+
     def getObjectCountByColor(self, color):
+        print self.visible
         counter = 0
-        for _, _, obj_color in self.db:
+        for _, _, obj_color in self.visible:
             if obj_color == color:
                 counter += 1
         return counter
@@ -65,16 +75,21 @@ class Database(object):
         @param _try  - integer
         @return string - object name
         """
+        print color, _try
         assert isinstance(color, type('')), 'The color attribute needs to be a string.'
         assert isinstance(_try,  int),      '_try needs to be an integer'
         
         # just get all colors in order
-        colors  = [x[2] for x in self.db]
+        colors  = [x[2] for x in self.visible]
         assert color in colors, 'The word %s was not found in the available colors' % color
+
+        print colors
         
         # select the object based on the try
         indices = [i for i, x in enumerate(colors) if x == color]
         assert _try < len(indices), 'You only got %s objects but its already your %s try.' % (_try, len(indices)) 
 
+        print indices
+
         # select the name of the object
-        return self.db[indices[_try]][1]
+        return self.visible[indices[_try]][1]

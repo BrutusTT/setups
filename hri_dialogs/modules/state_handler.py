@@ -26,7 +26,7 @@ class StateHandler(BaseModule):
     
         self.speechPort  = self.createOutputPort('speech')
         self.pointPort   = self.createOutputPort('point')
-        self.textPort    = self.createInputPort('text')
+#        self.textPort    = self.createInputPort('text')
         self.markerPort  = self.createInputPort('marker', 'buffered')
 
         self.connect(self.pointPort.getName(), '/NaoController/rpc')
@@ -86,19 +86,18 @@ class StateHandler(BaseModule):
 #         self.speechPort.write(bottle)
     
 
-    def point(self, location):
+    def point(self, args):
         bottle  = yarp.Bottle()
         bottle.clear()
 
-        print location
+        mx, my = args[1]
 
-        x = 0.1
-        y = 0.1
-        z = 0.1
+        y = ((mx / 240.0) - 1.0) * 0.2
+        z = (my / 640.0) * -0.4
 
         bottle.addString('point')
         bottle.addString('left')
-        bottle.addDouble(x)
+        bottle.addDouble(0.2)
         bottle.addDouble(y)
         bottle.addDouble(z)
 
@@ -176,6 +175,7 @@ class StateHandler(BaseModule):
                 self.objects[name] = [color, foundObjects[oid]]
                 print name
 
+        self.db.setVisibleObjects(self.objects.keys())  
 
     def start(self):
 
@@ -206,7 +206,8 @@ class StateHandler(BaseModule):
                 color = self.listenFor(self.db.colors, fail = 'asr_failed')
         
             print "The SLU found a color: %s " % (color)
-            tries = self.db.getObjectCountByColor(color)
+            tries  = self.db.getObjectCountByColor(color)
+            answer = ''
 
             for _try in range(tries):
             
