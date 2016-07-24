@@ -21,8 +21,26 @@ class StateHandler(BaseModule):
     """ The StateHandler class provides a yarp module to that handles the state of an HRI task.
     """
 
+    def startLog(self):
+        with open('state_handler_%s.log' % time.time(), 'w') as f:
+            self.log = f
+    
+
+    def __del__(self):
+        if hasattr(self, 'log') and self.log:
+            self.log.close()
+    
+
+    def writeAudio(self, data):
+        filename = 'speech_input_%s.data' % time.time()
+        self.log.write('%s\tspeech_input\t%s' % (time.time(), filename) )
+        with open(filename, 'w') as f:
+            f.write(data)
+
+
     def configure(self, rf):
         BaseModule.configure(self, rf)
+        self.startLog()
     
         self.speechPort  = self.createOutputPort('speech')
         self.pointPort   = self.createOutputPort('point')
@@ -50,7 +68,6 @@ class StateHandler(BaseModule):
 #             print bottle.toString()
 #         
 #         return BaseModule.updateModule(self)
-
 
     def runModule(self, *args):
         self.configure(None)
@@ -122,9 +139,11 @@ class StateHandler(BaseModule):
                     # we need some special handling here to correctly print unicode characters to standard output
                     if str is bytes:  # this version of Python uses bytes for strings (Python 2)
                         print("You said {}".format(a).encode("utf-8"))
+                        self.log.write('%s\t%s' % (time.time(), "You said {}".format(a).encode("utf-8")))
                         break
                     else:  # this version of Python uses unicode for strings (Python 3+)
                         print("You said {}".format(a))
+                        self.log.write('%s\t%s' % (time.time(), "You said {}".format(a)))
                         break
             except sr.UnknownValueError:
                         self.tts.say("Oops! Did not catch that")
@@ -284,6 +303,7 @@ class StateHandler(BaseModule):
         if speech:
             if '%' in speech:
                 speech = speech % (kwargs)
+            self.log.writeln('%s\t%s' % (time.time(), speech))
             self.tts.say(speech)
 
 
