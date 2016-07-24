@@ -27,6 +27,50 @@
             <node>localhost</node>
     </module>
 
+    <!-- data dumper -->
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /dump/marker --dir dump/marker</parameters>
+        <node>localhost</node>
+        <prefix></prefix>
+    </module>
+
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /dump/video --dir dump/video</parameters>
+        <node>localhost</node>
+        <prefix></prefix>
+    </module>
+
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /dump/video_raw --dir dump/video_raw</parameters>
+        <node>localhost</node>
+        <prefix></prefix>
+    </module>
+
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /dump/order --dir dump/order</parameters>
+        <node>localhost</node>
+        <prefix></prefix>
+    </module>
+
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /dump/point --dir dump/point</parameters>
+        <node>localhost</node>
+        <prefix></prefix>
+    </module>
+
+    <module>
+        <name>yarpdatadumper</name>
+        <parameters>--name /dump/speech --dir dump/speech</parameters>
+        <node>localhost</node>
+        <prefix></prefix>
+    </module>
+
+
     <!-- grabber:out -->
     <connection>
             <from>/grabber</from>
@@ -39,6 +83,32 @@
             <from>/HCMarker/img:o</from>
             <to>/view/marker</to>
             <protocol></protocol>
+    </connection>
+
+    <!-- Dumper -->
+    <connection>
+        <from>/grabber</from>
+        <to>/dump/video_raw</to>
+    </connection>
+
+    <connection>
+        <from>/HCMarker/markers:o</from>
+        <to>/dump/marker</to>
+    </connection>
+
+    <connection>
+        <from>/HCMarker/order:o</from>
+        <to>/dump/order</to>
+    </connection>
+
+    <connection>
+        <from>/HCMarker/img:o</from>
+        <to>/dump/video_marker</to>
+    </connection>
+
+    <connection>
+        <from>/StateHandler/point:o</from>
+        <to>/dump/point</to>
     </connection>
 
 </application>
