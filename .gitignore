@@ -4,3 +4,9 @@
 .pydevproject
 
 *.pyc
+
+*.log
+
+*.data
+
+*.wav

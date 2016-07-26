@@ -27,7 +27,7 @@ class StateHandler(BaseModule):
     
 
     def writeAudio(self, data):
-        filename = 'speech_input_%s.data' % time.time()
+        filename = 'speech_input_%s.wav' % time.time()
         self.log.write('%s\tspeech_input\t%s\n' % (time.time(), filename) )
         with open(filename, 'w') as f:
             f.write(data)
@@ -140,6 +140,7 @@ class StateHandler(BaseModule):
             print("Got it! Now to recognize it")
             try:
                     # recognize speech using Google Speech Recognition
+                    self.writeAudio(audio.get_wav_data())
                     a = r.recognize_google(audio)
                     print type(a)
                     a = a.encode('utf8')
