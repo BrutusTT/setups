@@ -5,33 +5,33 @@
 import random
 
 DSimple = {
-        'start':      ['I am here' ],
-        'greeting':   ['Hi' ],
-        'explain':    ['Please play the I spy game with me.' ],
+        'start':      ['Nock Nock' ],
+        'greeting':   ['Hi!' ],
+        'explain':    ['I spy? you! Go!' ],
         'refere_to':  ['%(obj)s?'],
-        'success':    ['Yeah!', 
-                       'Yuchu!' ],
-        'failed':     ['Let me try again.', 
-                       'Oh, but this time' ],
-        'asr_failed': ['Sorry, but I did not understand you.'],
-        'try_again':  ['again?'],
+        'success':    ['Yey Yey!', 
+                       'Yeah!' ],
+        'failed':     ['Oh!' ],
+        'asr_failed': ['What?'],
+        'try_again':  ['again!?'],
         'goodbye':    [ 'Bye bye.',
-                      ], 
-
+                      ],
+        'cheat':      ['cheat!'],
+        'clarification':    ['What one?'],
+        'clarification2':    ['What?'],
       }
 
 
 DComplex = {
-        'start':      ['I am here' ],
+        'start':      ['Nock Nock' ],
         'greeting':   ['Hi!', 
-                       'Hello!',
-                       'Good morning!' ],
-        'explain':    ['Please play the I spy game with me.' ],
+                       'Hello!' ],
+        'explain':    ['Let us play the I spy game, you start! Go!' ],
         'refere_to':  ['Is it the %(obj)s?', 
                        'the %(obj)s?',
                        'That %(obj)s?'],
-        'success':    ['Yeah!', 
-                       'Yuchu!' ],
+        'success':    ['Yeah^^!', 
+                       'Yes^^!' ],
         'failed':     ['Let me try again.', 
                        'Oh, but this time' ],
         'asr_failed': ['Sorry, but I did not understand you.'],
@@ -39,7 +39,10 @@ DComplex = {
         'goodbye':    [ 'Thank you for playing the game with me.', 
                        'Goodbye.',
                        'Bye bye.',
-                      ], 
+                      ],
+        'cheat':      ['You are cheating!'],
+        'clarification':    ['Which one is it?'],
+        'clarification2':    ['What did you say?'],
       }
 
 

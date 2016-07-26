@@ -56,7 +56,7 @@ class StateHandler(BaseModule):
         self.db = Database('Data_base_fruits.csv')
 
         # Load the dialog
-        self.dialog = Dialog('complex')
+        self.dialog = Dialog('simple')
 
         return True
     
@@ -68,6 +68,7 @@ class StateHandler(BaseModule):
 #             print bottle.toString()
 #         
 #         return BaseModule.updateModule(self)
+
 
     def runModule(self, *args):
         self.configure(None)
@@ -109,19 +110,32 @@ class StateHandler(BaseModule):
 
         mx, my = args[1]
 
-        y = ((mx / 240.0) - 1.0) * 0.2
+        y = ((mx / 240.0) - 1.0) * -0.4
         z = (my / 640.0) * -0.4
 
         bottle.addString('point')
         bottle.addString('left')
-        bottle.addDouble(0.2)
+        bottle.addDouble(0.6)
         bottle.addDouble(y)
         bottle.addDouble(z)
 
         
         self.pointPort.write(bottle)
 
+    def celebreat(self):
+        bottle  = yarp.Bottle()
+        bottle.clear()
 
+        bottle.addString('point')
+        bottle.addString('left')
+        bottle.addDouble(0.2)
+        bottle.addDouble(0.2)
+        bottle.addDouble(0.4)
+
+        
+        self.pointPort.write(bottle)
+        
+    
     def recognizeSpeech(self):
         # Function which receive a sound and give back a sentence in the form of list of words.
         while True:
@@ -146,7 +160,7 @@ class StateHandler(BaseModule):
                         self.log.write('%s\t%s' % (time.time(), "You said {}".format(a)))
                         break
             except sr.UnknownValueError:
-                        self.tts.say("Oops! Did not catch that")
+                        self.say('clarification2')
             except sr.RequestError as e:
                         print("Uh oh! Couldn't request results from Google Speech Recognition service; {0}".format(e))
 
@@ -239,6 +253,8 @@ class StateHandler(BaseModule):
                 answer = self.recognizeSpeech()
     
                 if 'yes' in answer:
+                    start_new_thread(self.celebreat, ())
+                    time.sleep(1)
                     self.say('success')
                     break
                             
@@ -248,11 +264,11 @@ class StateHandler(BaseModule):
 
             # after n tries
             if 'no' in answer:
-                self.tts.say("Your are cheating!")
+                self.say('cheat')
                 time.sleep(0.5)
-                self.tts.say("Which one is it?")
+                self.say('clarification')
                 _ = self.recognizeSpeech()
-                self.tts.say('Ah, I see.')
+                self.tts.say('Ah,!')
 
             stop = self.repeat()
                 
