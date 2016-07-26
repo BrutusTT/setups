@@ -21,11 +21,6 @@ class StateHandler(BaseModule):
     """ The StateHandler class provides a yarp module to that handles the state of an HRI task.
     """
 
-    def startLog(self):
-        with open('state_handler_%s.log' % time.time(), 'w') as f:
-            self.log = f
-    
-
     def __del__(self):
         if hasattr(self, 'log') and self.log:
             self.log.close()
@@ -40,7 +35,7 @@ class StateHandler(BaseModule):
 
     def configure(self, rf):
         BaseModule.configure(self, rf)
-        self.startLog()
+        self.log = open('state_handler_%s.log' % time.time(), 'w')
     
         self.speechPort  = self.createOutputPort('speech')
         self.pointPort   = self.createOutputPort('point')
