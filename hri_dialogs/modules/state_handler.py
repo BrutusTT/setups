@@ -33,7 +33,7 @@ class StateHandler(BaseModule):
 
     def writeAudio(self, data):
         filename = 'speech_input_%s.data' % time.time()
-        self.log.write('%s\tspeech_input\t%s' % (time.time(), filename) )
+        self.log.write('%s\tspeech_input\t%s\n' % (time.time(), filename) )
         with open(filename, 'w') as f:
             f.write(data)
 
@@ -153,11 +153,11 @@ class StateHandler(BaseModule):
                     # we need some special handling here to correctly print unicode characters to standard output
                     if str is bytes:  # this version of Python uses bytes for strings (Python 2)
                         print("You said {}".format(a).encode("utf-8"))
-                        self.log.write('%s\t%s' % (time.time(), "You said {}".format(a).encode("utf-8")))
+                        self.log.write('%s\t%s\n' % (time.time(), "You said {}".format(a).encode("utf-8")))
                         break
                     else:  # this version of Python uses unicode for strings (Python 3+)
                         print("You said {}".format(a))
-                        self.log.write('%s\t%s' % (time.time(), "You said {}".format(a)))
+                        self.log.write('%s\t%s\n' % (time.time(), "You said {}".format(a)))
                         break
             except sr.UnknownValueError:
                         self.say('clarification2')
@@ -319,7 +319,7 @@ class StateHandler(BaseModule):
         if speech:
             if '%' in speech:
                 speech = speech % (kwargs)
-            self.log.writeln('%s\t%s' % (time.time(), speech))
+            self.log.write('%s\t%s\n' % (time.time(), speech))
             self.tts.say(speech)
 
 
