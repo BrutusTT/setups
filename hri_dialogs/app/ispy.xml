@@ -37,17 +37,17 @@
 
     <module>
         <name>yarpdatadumper</name>
-        <parameters>--name /dump/video --dir dump/video</parameters>
+        <parameters>--name /dump/video_marker --dir dump/video_marker</parameters>
         <node>localhost</node>
         <prefix></prefix>
     </module>
 
-    <module>
+    <!-- module>
         <name>yarpdatadumper</name>
         <parameters>--name /dump/video_raw --dir dump/video_raw</parameters>
         <node>localhost</node>
         <prefix></prefix>
-    </module>
+    </module -->
 
     <module>
         <name>yarpdatadumper</name>
@@ -86,10 +86,10 @@
     </connection>
 
     <!-- Dumper -->
-    <connection>
+    <!-- connection>
         <from>/grabber</from>
         <to>/dump/video_raw</to>
-    </connection>
+    </connection -->
 
     <connection>
         <from>/HCMarker/markers:o</from>
