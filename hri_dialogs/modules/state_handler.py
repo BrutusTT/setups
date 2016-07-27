@@ -264,7 +264,7 @@ class StateHandler(BaseModule):
                 time.sleep(0.5)
                 self.say('clarification')
                 _ = self.recognizeSpeech()
-                self.tts.say('Ah,!')
+                self.say('Ah,!')
 
             stop = self.repeat()
                 
