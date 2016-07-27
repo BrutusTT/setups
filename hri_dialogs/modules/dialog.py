@@ -7,7 +7,7 @@ import random
 DSimple = {
         'start':      ['Nock Nock' ],
         'greeting':   ['Hi!' ],
-        'explain':    ['I spy? you! Go!' ],
+        'explain':    ['I spy? you!' ],
         'refere_to':  ['%(obj)s?'],
         'success':    ['Yey Yey!', 
                        'Yeah!' ],
@@ -19,6 +19,8 @@ DSimple = {
         'cheat':      ['cheat!'],
         'clarification':    ['What one?'],
         'clarification2':    ['What?'],
+        'other':      ['other thing!'],
+        'pick':       ['Go!'],
       }
 
 
@@ -43,6 +45,8 @@ DComplex = {
         'cheat':      ['You are cheating!'],
         'clarification':    ['Which one is it?'],
         'clarification2':    ['What did you say?'],
+        'other':      ['Use other objects!'],
+        'pick':       ['Go for it!'],
       }
 
 

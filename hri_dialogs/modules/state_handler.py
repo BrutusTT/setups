@@ -226,7 +226,7 @@ class StateHandler(BaseModule):
         while not stop:
 
         # ACTIONS#############################################################################
-
+            self.say('pick')
             self.findObjects()
 
             # Wait for a color in the sentence **************************************
@@ -278,6 +278,7 @@ class StateHandler(BaseModule):
         
             phrase = self.recognizeSpeech()
             if 'yes' in phrase:
+                self.say('other')
                 return False
             
             elif 'no' in phrase:
