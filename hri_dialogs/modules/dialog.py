@@ -22,6 +22,8 @@ DSimple = {
         'other':      ['other thing!'],
         'pick':       ['Go!'],
         'Ah,!':       ['Ah,!'],
+        'shuffle':    ['Resort please'],
+        'ready':      ['Finished?'],
       }
 
 
@@ -49,6 +51,8 @@ DComplex = {
         'other':      ['Use other objects!'],
         'pick':       ['Go for it!'],
         'Ah,!':       ['Ah,!'],
+        'shuffle':    ['Resort please'],
+        'ready':      ['Finished?'],
       }
 
 

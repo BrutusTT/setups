@@ -267,11 +267,28 @@ class StateHandler(BaseModule):
                 self.say('Ah,!')
 
             stop = self.repeat()
+            if not stop:
+                self.shuffle()
+                
                 
         # Leave********************************************
         self.say('goodbye')
 
 
+    def shuffle(self):
+        self.say('shuffle')
+        time.sleep(0.5)
+        self.say('ready')
+        while True:
+        
+            phrase = self.recognizeSpeech()
+            if 'yes' in phrase:
+                return
+            
+            else:
+                self.say('asr_failed')
+
+    
     def repeat(self):
         self.say('try_again')
         while True:
