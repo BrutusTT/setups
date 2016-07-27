@@ -21,6 +21,7 @@ DSimple = {
         'clarification2':    ['What?'],
         'other':      ['other thing!'],
         'pick':       ['Go!'],
+        'Ah,!':       ['Ah,!'],
       }
 
 
@@ -47,6 +48,7 @@ DComplex = {
         'clarification2':    ['What did you say?'],
         'other':      ['Use other objects!'],
         'pick':       ['Go for it!'],
+        'Ah,!':       ['Ah,!'],
       }
 
 
