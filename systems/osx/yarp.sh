@@ -18,7 +18,15 @@ git pull
 # set some environment variables for compiling
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$(brew --prefix gettext)/include/
 export PATH=$PATH:/usr/local/bin
+export OPENNI2_INCLUDE=/usr/local/include/ni2
+export OPENNI2_REDIST=/usr/local/lib/ni2
+export NITE2_INCLUDE=~/software/bin/NiTE-MacOSX-x64-2.2/Include
+export NITE2_REDIST64=~/software/bin/NiTE-MacOSX-x64-2.2/Redist
+export PATH=/usr/local/bin:$PATH
 export PYTHONLIB=$(brew --prefix python)/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
+
+export PATH=$(brew --prefix qt5)/bin:$PATH
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(brew --prefix qt5)/lib/pkgconfig
 
 # Doxygen
 if [ ! -e "Doxyfile" ]; then
@@ -42,7 +50,6 @@ cd build
 
 # set the compile flags
 export FLAGS="
--DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
 -DALLOW_IDL_GENERATION=OFF
 -DCMAKE_BUILD_TYPE=RELEASE 
 -DCREATE_DEVICE_LIBRARY_MODULES=TRUE 

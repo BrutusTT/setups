@@ -2,29 +2,29 @@
 
 echo "Setup Environment"
 
-if [ ! -d "~/software" ]; then
+if [ ! -d "${HOME}/software" ]; then
 	echo "create main software directory"
-	mkdir ~/software
+	mkdir ${HOME}/software
 fi
 
-if [ ! -d "~/software/bin" ]; then
+if [ ! -d "${HOME}/software/bin" ]; then
 	echo "create bin directory"
-	mkdir ~/software/bin
+	mkdir ${HOME}/software/bin
 fi
 
-if [ ! -d "~/software/build" ]; then
+if [ ! -d "${HOME}/software/build" ]; then
 	echo "create build directory"
-	mkdir ~/software/build
+	mkdir ${HOME}/software/build
 fi
 
-if [ ! -d "~/software/git" ]; then
+if [ ! -d "${HOME}/software/git" ]; then
 	echo "create git directory"
-	mkdir ~/software/git
+	mkdir ${HOME}/software/git
 fi
 
-if [ ! -d "~/software/environments" ]; then
+if [ ! -d "${HOME}/software/environments" ]; then
 	echo "create environments directory"
-	mkdir ~/software/environments
+	mkdir ${HOME}/software/environments
 fi
 
 

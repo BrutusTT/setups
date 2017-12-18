@@ -22,8 +22,11 @@ source $platform/bash_env
 thirdparty_git.sh
 
 # Yarp & iCub stuff
+$platform/ycm.sh
 $platform/yarp.sh
 $platform/icub_main.sh
+$platform/icub_contrib_common.sh
+
 
 # own stuff
 brutustt.sh
