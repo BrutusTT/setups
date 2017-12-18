@@ -9,22 +9,22 @@ fi
 
 if [ ! -d "~/software/bin" ]; then
 	echo "create bin directory"
-		mkdir ~/software/bin
+	mkdir ~/software/bin
 fi
 
 if [ ! -d "~/software/build" ]; then
 	echo "create build directory"
-		mkdir ~/software/build
+	mkdir ~/software/build
 fi
 
 if [ ! -d "~/software/git" ]; then
 	echo "create git directory"
-		mkdir ~/software/git
+	mkdir ~/software/git
 fi
 
 if [ ! -d "~/software/environments" ]; then
 	echo "create environments directory"
-		mkdir ~/software/environments
+	mkdir ~/software/environments
 fi
 
 
@@ -32,6 +32,6 @@ fi
 
 echo "Setup Python Packages via pip"
 
-pip install virtualenv
+pip install virtualenv --user
 pip install SpeechRecognition --user
 pip install numpy --user
