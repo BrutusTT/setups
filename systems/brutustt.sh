@@ -14,7 +14,7 @@ fi
 
 cd $SOFTWARE_GIT/spy
 git pull
-python setup.py install
+python setup.py install --user
 
 # pyJD Package
 if [ ! -d "$SOFTWARE_GIT/pyJD" ]; then
@@ -24,7 +24,7 @@ fi
 
 cd $SOFTWARE_GIT/pyJD
 git pull
-python setup.py install
+python setup.py install --user
 
 # pyNAO Package
 if [ ! -d "$SOFTWARE_GIT/pyNAO" ]; then
@@ -34,7 +34,7 @@ fi
 
 cd $SOFTWARE_GIT/pyNAO
 git pull
-python setup.py install
+python setup.py install --user
 
 
 # go back to the initial current directory

@@ -24,7 +24,7 @@ fi
 
 cd $SOFTWARE_GIT/python-ar-markers
 git pull
-python setup.py install
+python setup.py install --user
 
 # go back to the initial current directory
 cd $CUR_PWD
