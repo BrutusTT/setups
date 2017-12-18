@@ -6,13 +6,13 @@ CUR_PWD=`pwd`
 export GIT_ICC=$SOFTWARE/git/icub_contrib_common
 
 # Clone Yarp if it does not exist yet
-if [ ! -e "$GIT_YCM" ]; then
+if [ ! -e "$GIT_ICC" ]; then
 	cd $SOFTWARE/git
 	git clone https://github.com/robotology/icub-contrib-common.git
 fi
 
 # update icub-main
-cd $GIT_YCM
+cd $GIT_ICC
 git pull
 
 # remove old build directory
