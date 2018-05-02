@@ -1,0 +1,68 @@
+####################################################################################################
+# General Environment Variables
+####################################################################################################
+#export JAVA_HOME=$(/usr/libexec/java_home)
+export EDITOR=mcedit
+
+export SOFTWARE=$HOME/software
+export SOFTWARE_BIN=$SOFTWARE/bin
+export SOFTWARE_BUILD=$SOFTWARE/build
+export SOFTWARE_GIT=$SOFTWARE/git
+export SOFTWARE_ENV=$SOFTWARE/environments
+
+export PATH=$SOFTWARE_BIN:/usr/local/bin:$PATH:/usr/local/sbin:
+
+####################################################################################################
+# Shortcuts for CLI tools
+####################################################################################################
+alias la="ls -la"
+alias ports='lsof -i -P | grep -i "listen"'
+alias scp="rsync -avzP"		# rsync settings
+
+# recursive update in git directory
+alias gitup='for dir in $SOFTWARE_GIT/*; do (cd "$dir" && echo "$dir" && git pull); done'
+
+
+####################################################################################################
+# YARP/iCub Environment Variables
+####################################################################################################
+export YARP_DATA_DIRS=/usr/local/share/iCub:/usr/local/share/yarp
+export YARP_ROBOT_NAME=iCubEdinburgh01
+export ICUBcontrib_DIR=/usr/local/share/ICUBcontrib
+export LUA_PATH=";;;$SOFTWARE_GIT/rFSM/?.lua;$ICUBcontrib_DIR/share/ICUBcontrib/contexts/iol/lua/?.lua"
+
+export OPENNI2_INCLUDE=/usr/local/include/ni2
+export OPENNI2_REDIST=/usr/local/lib/ni2
+export NITE2_INCLUDE=$SOFTWARE_BIN/NiTE-MacOSX-x64-2.2/Include
+export NITE2_REDIST64=$SOFTWARE_BIN/NiTE-MacOSX-x64-2.2/Redist
+
+export ROBOT_CODE=$SOFTWARE_GIT
+export YARP_ROOT=$ROBOT_CODE/yarp
+export ICUB_ROOT=$ROBOT_CODE/icub-main
+export ICUB_BUILD_PATHNAME="build"
+
+if [ "$ICUB_BUILD_PATHNAME" != "" ]; then
+    export YARP_DIR=$YARP_ROOT/$ICUB_BUILD_PATHNAME
+    export ICUB_DIR=$ICUB_ROOT/$ICUB_BUILD_PATHNAME
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROBOT_CODE/icub-tests/suits/$ICUB_BUILD_PATHNAME/plugin
+fi
+
+# Debug Stream customization
+export YARP_VERBOSE_OUTPUT=0
+export YARP_COLORED_OUTPUT=1
+export YARP_TRACE_ENABLE=0
+export YARP_FORWARD_LOG_ENABLE=0
+
+# Add YARP bash completion
+if [ -f $YARP_ROOT/scripts/yarp_completion ]; then
+    source $YARP_ROOT/scripts/yarp_completion
+fi
+
+####################################################################################################
+# Robotic Shortcuts
+####################################################################################################
+alias startgrabber="yarpdev --device opencv_grabber "
+alias startmary="cd $SOFTWARE_GIT/marytts-installer && marytts server"
+alias startnao="/Applications/Choregraphe.app/Contents/Resources/bin/naoqi-bin"
+alias pynao1="source $SOFTWARE_ENV/pynao1/bin/activate"
+alias yarpclean="yarp clean --timeout 1.0"
