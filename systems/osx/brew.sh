@@ -1,7 +1,7 @@
 #!/bin/bash
 
+brew tap homebrew/science
+
 brew cask install xquartz
-brew install goocanvas
-brew install libgnomecanvasmm
-brew install lua
-brew install mc
+
+brew install doxygen goocanvas ffmpeg ipopt libgnomecanvasmm leveldb libsvm lua mc protobuf

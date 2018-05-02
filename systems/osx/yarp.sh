@@ -16,7 +16,15 @@ git pull
 # set some environment variables for compiling
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$(brew --prefix gettext)/include/
 export PATH=$PATH:/usr/local/bin
+export OPENNI2_INCLUDE=/usr/local/include/ni2
+export OPENNI2_REDIST=/usr/local/lib/ni2
+export NITE2_INCLUDE=~/software/bin/NiTE-MacOSX-x64-2.2/Include
+export NITE2_REDIST64=~/software/bin/NiTE-MacOSX-x64-2.2/Redist
+export PATH=/usr/local/bin:$PATH
 export PYTHONLIB=$(brew --prefix python)/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib
+
+export PATH=$(brew --prefix qt5)/bin:$PATH
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(brew --prefix qt5)/lib/pkgconfig
 
 # Doxygen
 if [ ! -e "Doxyfile" ]; then
@@ -40,7 +48,6 @@ cd $YARP_DIR
 
 # set the compile flags
 export FLAGS="
--DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk
 -DALLOW_IDL_GENERATION=OFF
 -DCMAKE_BUILD_TYPE=RELEASE 
 -DCREATE_DEVICE_LIBRARY_MODULES=TRUE 
@@ -51,16 +58,15 @@ export FLAGS="
 -DCREATE_OPTIONAL_CARRIERS=TRUE 
 -DCREATE_PYTHON=TRUE 
 -DCREATE_SHARED_LIBRARY=TRUE 
--DCREATE_YARPBUILDER=TRUE 
 -DCREATE_YARPDATADUMPER=TRUE  
 -DCREATE_YARPDATAPLAYER=TRUE  
 -DCREATE_YARPMANAGER=TRUE  
 -DCREATE_YARPMANAGER_CONSOLE=TRUE  
 -DCREATE_YARPVIEW=TRUE  
 -DCREATE_YARPSCOPE=FALSE  
--DENABLE_yarpcar_bayer_carrier=TRUE  
--DENABLE_yarpcar_mjpeg_carrier=TRUE  
--DENABLE_yarpcar_xmlrpc_carrier=TRUE  
+-DENABLE_yarpcar_bayer=TRUE  
+-DENABLE_yarpcar_mjpeg=TRUE  
+-DENABLE_yarpcar_xmlrpc=TRUE  
 -DENABLE_yarpmod_OpenNI2DeviceClient=TRUE
 -DENABLE_yarpmod_OpenNI2DeviceServer=TRUE
 -DENABLE_yarpmod_portaudio=TRUE 
