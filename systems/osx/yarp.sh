@@ -3,16 +3,14 @@
 # save current directory
 CUR_PWD=`pwd`
 
-export GIT_YARP=$SOFTWARE/git/yarp
-
 # Clone Yarp if it does not exist yet
-if [ ! -e "$GIT_YARP" ]; then
-	cd $SOFTWARE/git
+if [ ! -e "$YARP_ROOT" ]; then
+	cd $ROBOT_CODE
 	git clone https://github.com/robotology/yarp.git
 fi
 
 # update yarp
-cd $GIT_YARP
+cd $YARP_ROOT
 git pull
 
 # set some environment variables for compiling
@@ -26,8 +24,8 @@ if [ ! -e "Doxyfile" ]; then
 fi
 
 # remove old build directory
-if [ -d "build" ]; then
-  rm -rf build
+if [ -d $YARP_DIR ]; then
+  rm -rf $YARP_DIR
 fi
 
 # move and remove yarp include directory from previous runs
@@ -37,8 +35,8 @@ if [ -d "/usr/local/include/yarp" ]; then
 fi
 
 # create build directory and switch to it
-mkdir build
-cd build
+mkdir $YARP_DIR
+cd $YARP_DIR
 
 # set the compile flags
 export FLAGS="
@@ -76,10 +74,10 @@ export FLAGS="
 "
 
 # run CMAKE
-cmake -Wno-dev .. $FLAGS 
+cmake -Wno-dev $FLAGS $YARP_ROOT
 
 # compile and install
-make -j 8 && make install
+make -j 8 install
 
 # build java bindings
 cd generated_src

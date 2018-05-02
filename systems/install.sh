@@ -5,17 +5,18 @@ platform='unknown'
 unamestr=`uname`
 
 if [[ "$unamestr" == 'Linux' ]]; then
-	platform='linux'
+    platform='linux'
 
 
 elif [[ "$unamestr" == 'Darwin' ]]; then
-	platform='osx'
-	
-	$platform/brew.sh
+    platform='osx'
+
+    $platform/brew.sh
 fi
 
 # Environment Setup
 source $platform/bash_env
+
 ./base_posix.sh
 
 # third party tools

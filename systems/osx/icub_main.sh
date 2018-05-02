@@ -3,16 +3,14 @@
 # save current directory
 CUR_PWD=`pwd`
 
-export GIT_ICUB_MAIN=$SOFTWARE/git/icub-main
-
 # Clone Yarp if it does not exist yet
-if [ ! -e "$GIT_ICUB_MAIN" ]; then
-	cd $SOFTWARE/git
-	git clone https://github.com/robotology/icub-main.git
+if [ ! -e "$ICUB_ROOT" ]; then
+    cd $ROBOT_CODE
+    git clone https://github.com/robotology/icub-main.git
 fi
 
 # update icub-main
-cd $GIT_ICUB_MAIN
+cd $ICUB_ROOT
 git pull
 
 # set some environment variables for compiling
@@ -26,17 +24,17 @@ export PKG_CONFIG_PATH=$(brew --prefix cairo)/lib/pkgconfig:$(brew --prefix pixm
 
 # Doxygen
 if [ ! -e "Doxyfile" ]; then
-	ln -s $SOFTWARE/docs/icub_main.doxyfile Doxyfile
+    ln -s $SOFTWARE/docs/icub_main.doxyfile Doxyfile
 fi
 
 # remove old build directory
-if [ -d "build" ]; then
-  rm -rf build
+if [ -d "$ICUB_DIR" ]; then
+    rm -rf $ICUB_DIR
 fi
 
 # create build directory and switch to it
-mkdir build
-cd build
+mkdir $ICUB_DIR
+cd $ICUB_DIR
 
 # set the compile flags
 export FLAGS="
@@ -49,10 +47,10 @@ export FLAGS="
 "
 
 # run CMAKE
-cmake -Wno-dev .. $FLAGS
+cmake -Wno-dev  $FLAGS $ICUB_ROOT
 
 # compile and install
-make -j 8 && make install
+make -j 8 install
 
 # go back to the initial current directory
 cd $CUR_PWD

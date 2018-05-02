@@ -43,6 +43,28 @@ export OPENNI2_REDIST=/usr/local/lib/ni2
 export NITE2_INCLUDE=$SOFTWARE_BIN/NiTE-MacOSX-x64-2.2/Include
 export NITE2_REDIST64=$SOFTWARE_BIN/NiTE-MacOSX-x64-2.2/Redist
 
+export ROBOT_CODE=$SOFTWARE_GIT
+export YARP_ROOT=$ROBOT_CODE/yarp
+export ICUB_ROOT=$ROBOT_CODE/icub-main
+export ICUB_BUILD_PATHNAME="build"
+
+if [ "$ICUB_BUILD_PATHNAME" != "" ]; then
+    export YARP_DIR=$YARP_ROOT/$ICUB_BUILD_PATHNAME
+    export ICUB_DIR=$ICUB_ROOT/$ICUB_BUILD_PATHNAME
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROBOT_CODE/icub-tests/suits/$ICUB_BUILD_PATHNAME/plugin
+fi
+
+# Debug Stream customization
+export YARP_VERBOSE_OUTPUT=0
+export YARP_COLORED_OUTPUT=1
+export YARP_TRACE_ENABLE=0
+export YARP_FORWARD_LOG_ENABLE=0
+
+# Add YARP bash completion
+if [ -f $YARP_ROOT/scripts/yarp_completion ]; then
+    source $YARP_ROOT/scripts/yarp_completion
+fi
+
 ####################################################################################################
 # Robotic Shortcuts
 ####################################################################################################
