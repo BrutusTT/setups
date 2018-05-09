@@ -3,15 +3,7 @@
 # save current directory
 CUR_PWD=`pwd`
 
-# Clone Yarp if it does not exist yet
-if [ ! -e "$YARP_ROOT" ]; then
-	cd $ROBOT_CODE
-	git clone https://github.com/robotology/yarp.git
-fi
-
-# update yarp
 cd $YARP_ROOT
-git pull
 
 # set some environment variables for compiling
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$(brew --prefix gettext)/include/

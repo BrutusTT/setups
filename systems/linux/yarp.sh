@@ -3,19 +3,7 @@
 # save current directory
 CUR_PWD=`pwd`
 
-
-# Clone Yarp if it does not exist yet
-if [ ! -e "$YARP_ROOT" ]; then
-    cd $ROBOT_CODE
-    git clone https://github.com/robotology/yarp.git
-fi
-
-# update yarp
 cd $YARP_ROOT
-git pull
-
-# set some environment variables for compiling
-export PATH=$PATH:/usr/local/bin
 
 # Doxygen
 if [ ! -e "Doxyfile" ]; then
@@ -45,7 +33,7 @@ export FLAGS="
 -DCREATE_GUIS=TRUE 
 -DCREATE_JAVA=FALSE 
 -DCREATE_LIB_MATH=TRUE
--DCREATE_LUA=TRUE 
+-DCREATE_LUA=FALSE 
 -DCREATE_OPTIONAL_CARRIERS=TRUE 
 -DCREATE_PYTHON=TRUE 
 -DCREATE_SHARED_LIBRARY=TRUE 

@@ -3,12 +3,6 @@
 # save current directory
 CUR_PWD=`pwd`
 
-# Clone Yarp if it does not exist yet
-if [ ! -e "$ICUB_ROOT" ]; then
-    cd $ROBOT_CODE
-    git clone https://github.com/robotology/icub-main.git
-fi
-
 # update icub-main
 cd $ICUB_ROOT
 git pull

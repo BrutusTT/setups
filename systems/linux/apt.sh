@@ -1,1 +1,1 @@
-sudo apt install ace libatlas-base-dev python-pip
+sudo apt install doxygen libace-dev libatlas-base-dev lua5.3 python-pip swig 

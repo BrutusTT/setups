@@ -3,18 +3,7 @@
 # save current directory
 CUR_PWD=`pwd`
 
-echo $ICUB_ROOT
-echo $ICUB_DIR
-
-# Clone Yarp if it does not exist yet
-if [ ! -e "$ICUB_ROOT" ]; then
-    cd $ROBOT_CODE
-    git clone https://github.com/robotology/icub-main.git
-fi
-
-# update icub-main
 cd $ICUB_ROOT
-git pull
 
 # set some environment variables for compiling
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/local/include/coin
