@@ -22,6 +22,9 @@ export SOFTWARE_ENV=$SOFTWARE/environments
 
 export PATH=$SOFTWARE_BIN:/usr/local/bin:$PATH:/usr/local/sbin:
 
+# Add Path to local/user installed binaries (used for python installation)
+export PATH=~/.local/bin:$PATH
+
 ####################################################################################################
 # YARP/iCub Environment Variables
 ####################################################################################################

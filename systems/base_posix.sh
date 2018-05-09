@@ -32,6 +32,7 @@ fi
 
 echo "Setup Python Packages via pip"
 
+pip install --user --upgrade pip
 pip install virtualenv --user
 pip install SpeechRecognition --user
 pip install numpy --user
