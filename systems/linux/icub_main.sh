@@ -3,14 +3,12 @@
 # save current directory
 CUR_PWD=`pwd`
 
-cd $ICUB_ROOT
-
 # set some environment variables for compiling
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/local/include/coin
 
 # Doxygen
 if [ ! -e "Doxyfile" ]; then
-    ln -s $SOFTWARE/docs/icub_main.doxyfile Doxyfile
+    ln -s $SOFTWARE/docs/icub_main.doxyfile $ICUB_ROOT/Doxyfile
 fi
 
 # remove old build directory

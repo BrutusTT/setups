@@ -5,7 +5,6 @@ CUR_PWD=`pwd`
 
 # update icub-main
 cd $ICUB_ROOT
-git pull
 
 # set some environment variables for compiling
 export PATH=$(brew --prefix qt5)/bin:$PATH

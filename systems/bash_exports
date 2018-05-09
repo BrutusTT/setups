@@ -28,6 +28,9 @@ export PATH=~/.local/bin:$PATH
 ####################################################################################################
 # YARP/iCub Environment Variables
 ####################################################################################################
+export GIT_YCM=$SOFTWARE_GIT/ycm
+export GIT_ICC=$SOFTWARE_GIT/icub_contrib_common
+
 export YARP_ROBOT_NAME=iCubEdinburgh01
 
 export YARP_DATA_DIRS=/usr/local/share/iCub:/usr/local/share/yarp

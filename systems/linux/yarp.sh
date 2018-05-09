@@ -17,8 +17,7 @@ fi
 
 # move and remove yarp include directory from previous runs
 if [ -d "/usr/local/include/yarp" ]; then
-  rm -rf /usr/local/include/yarp_prev
-  mv /usr/local/include/yarp /usr/local/include/yarp_prev
+	sudo rm -rf /usr/local/include/yarp_prev
 fi
 
 # create build directory and switch to it

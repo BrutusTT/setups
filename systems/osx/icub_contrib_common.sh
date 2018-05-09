@@ -3,8 +3,6 @@
 # save current directory
 CUR_PWD=`pwd`
 
-export GIT_ICC=$SOFTWARE/git/icub_contrib_common
-
 # update icub-main
 cd $GIT_ICC
 

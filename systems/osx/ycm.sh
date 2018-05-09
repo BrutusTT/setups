@@ -3,9 +3,6 @@
 # save current directory
 CUR_PWD=`pwd`
 
-export GIT_YCM=$SOFTWARE/git/YCM
-export ICUBcontrib_DIR=/usr/local/lib/ICUBcontrib/
-
 # update icub-main
 cd $GIT_YCM
 
