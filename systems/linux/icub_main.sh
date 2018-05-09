@@ -26,7 +26,6 @@ export FLAGS="
 -DENABLE_icubmod_cartesiancontrollerclient=TRUE
 -DENABLE_icubmod_cartesiancontrollerserver=TRUE
 -DENABLE_icubmod_gazecontrollerclient=TRUE 
--DICUB_USE_IPP=TRUE
 -DICUB_SHARED_LIBRARY=TRUE 
 "
 
