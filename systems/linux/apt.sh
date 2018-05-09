@@ -1,1 +1,1 @@
-sudo apt install libatlas-base-dev python-pip
+sudo apt install ace libatlas-base-dev python-pip

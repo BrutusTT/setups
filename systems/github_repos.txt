@@ -18,3 +18,6 @@ robotology/speech.git
 robotology/yarp.git
 robotology/ycm.git
 robotology/stereo-vision.git
+BrutusTT/pyJD.git
+BrutusTT/spy.git
+BrutusTT/pyNAO.git
