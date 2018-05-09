@@ -36,7 +36,7 @@ export FLAGS="
 cmake -Wno-dev $FLAGS $ICUB_ROOT
 
 # compile and install
-make -j 8 install
+make -j && sudo make install
 
 # go back to the initial current directory
 cd $CUR_PWD

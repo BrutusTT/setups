@@ -47,8 +47,8 @@ export FLAGS="
 -DENABLE_yarpcar_mjpeg=TRUE  
 -DENABLE_yarpcar_xmlrpc=TRUE  
 -DENABLE_yarpcar_depthimage=TRUE  
--DENABLE_yarpmod_OpenNI2DeviceClient=TRUE
--DENABLE_yarpmod_OpenNI2DeviceServer=TRUE
+-DENABLE_yarpmod_OpenNI2DeviceClient=FALSE
+-DENABLE_yarpmod_OpenNI2DeviceServer=FALSE
 -DENABLE_yarpmod_portaudio=TRUE 
 -DENABLE_yarpmod_opencv_grabber=TRUE 
 -DPREPARE_CLASS_FILES=TRUE  
@@ -62,7 +62,7 @@ export FLAGS="
 cmake -Wno-dev $FLAGS $YARP_ROOT
 
 # compile and install
-make -j 8 install
+make -j && sudo make install install
 
 # build java bindings
 #cd generated_src

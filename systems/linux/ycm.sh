@@ -35,7 +35,7 @@ export FLAGS="
 cmake -Wno-dev .. $FLAGS
 
 # compile and install
-make -j 8 && make install
+make -j  && sudo make install
 
 # go back to the initial current directory
 cd $CUR_PWD
