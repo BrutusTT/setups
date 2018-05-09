@@ -3,18 +3,11 @@
 # save current directory
 CUR_PWD=`pwd`
 
-export GIT_YCM=$SOFTWARE/git/YCM
+export GIT_YCM=$SOFTWARE/git/ycm
 export ICUBcontrib_DIR=/usr/local/lib/ICUBcontrib/
-
-# Clone Yarp if it does not exist yet
-if [ ! -e "$GIT_YCM" ]; then
-	cd $SOFTWARE/git
-	git clone https://github.com/robotology/ycm.git
-fi
 
 # update icub-main
 cd $GIT_YCM
-git pull
 
 # remove old build directory
 if [ -d "build" ]; then
