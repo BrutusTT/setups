@@ -36,7 +36,7 @@ while read src; do
 	else
 		echo "already exists ${src}"
 	fi
-done < github_repos.txt
+done < $CUR_PWD/github_repos.txt
 
 # go back where we were coming from
 cd $CUR_PWD
