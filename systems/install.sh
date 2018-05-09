@@ -8,10 +8,10 @@ source $platform/bash_env
 # Install System Packages
 
 
-if [[ "$platform" == 'osx' ]]; then
+if [[ "$platform" == 'linux' ]]; then
     $platform/apt.sh
 
-elif [[ "$platform" == 'linux' ]]; then
+elif [[ "$platform" == 'osx' ]]; then
     $platform/brew.sh
 fi
 
