@@ -1,0 +1,50 @@
+####################################################################################################
+# General Environment Variables
+####################################################################################################
+
+# OS Detection
+platform='unknown'
+unamestr=`uname`
+
+if [[ "$unamestr" == 'Linux' ]]; then
+    platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+    platform='osx'
+fi
+
+export EDITOR=mcedit
+
+export SOFTWARE=~/software
+export SOFTWARE_BIN=$SOFTWARE/bin
+export SOFTWARE_BUILD=$SOFTWARE/build
+export SOFTWARE_GIT=$SOFTWARE/git
+export SOFTWARE_ENV=$SOFTWARE/environments
+
+export PATH=$SOFTWARE_BIN:/usr/local/bin:$PATH:/usr/local/sbin:
+
+####################################################################################################
+# YARP/iCub Environment Variables
+####################################################################################################
+export YARP_ROBOT_NAME=iCubEdinburgh01
+
+export YARP_DATA_DIRS=/usr/local/share/iCub:/usr/local/share/yarp
+export ICUBcontrib_DIR=/usr/local/share/ICUBcontrib
+
+export LUA_PATH=";;;$SOFTWARE_GIT/rFSM/?.lua;$ICUBcontrib_DIR/share/ICUBcontrib/contexts/iol/lua/?.lua"
+
+export ROBOT_CODE=$SOFTWARE_GIT
+export YARP_ROOT=$ROBOT_CODE/yarp
+export ICUB_ROOT=$ROBOT_CODE/icub-main
+export ICUB_BUILD_PATHNAME="build"
+
+if [ "$ICUB_BUILD_PATHNAME" != "" ]; then
+    export YARP_DIR=$YARP_ROOT/$ICUB_BUILD_PATHNAME
+    export ICUB_DIR=$ICUB_ROOT/$ICUB_BUILD_PATHNAME
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROBOT_CODE/icub-tests/suits/$ICUB_BUILD_PATHNAME/plugin
+fi
+
+# Debug Stream customization
+export YARP_VERBOSE_OUTPUT=0
+export YARP_COLORED_OUTPUT=1
+export YARP_TRACE_ENABLE=0
+export YARP_FORWARD_LOG_ENABLE=0

@@ -1,0 +1,22 @@
+####################################################################################################
+# Robotic Shortcuts
+####################################################################################################
+
+# iCub
+alias startgrabber="yarpdev --device opencv_grabber "
+alias startmary="cd $SOFTWARE_GIT/marytts-installer && marytts server"
+alias yarpclean="yarp clean --timeout 1.0"
+
+# Add YARP bash completion
+if [ -f $YARP_ROOT/scripts/yarp_completion ]; then
+    source $YARP_ROOT/scripts/yarp_completion
+fi
+
+# Nao
+alias pynao1="source $SOFTWARE_ENV/pynao1/bin/activate"
+
+# recursive update in git directory
+alias gitup='for dir in $SOFTWARE_GIT/*; do (cd "$dir" && echo "$dir" && git pull); done'
+
+# CLI
+alias la="ls -la"
