@@ -10,6 +10,7 @@ source $platform/bash_env
 
 if [[ "$platform" == 'linux' ]]; then
     $platform/apt.sh
+    $platform/qt.sh    
 
     # install a higher CMake version by hand due to https://github.com/robotology/yarp/issues/1178    
     $platform/cmake.sh
