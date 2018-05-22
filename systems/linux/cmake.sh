@@ -10,7 +10,7 @@ rm cmake-3.11.1.tar.gz
 
 cd cmake-3.11.1
 ./bootstrap
-make -j
+make -j 8
 sudo make install
 
 cd $CUR_PWD
