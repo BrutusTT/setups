@@ -22,7 +22,7 @@ export FLAGS="
 "
 
 # run CMAKE
-cmake -Wno-dev .. $FLAGS
+ccmake -Wno-dev .. $FLAGS
 
 # compile and install
 make -j  && sudo make install
